@@ -13,7 +13,8 @@ All data is saved in an SQLite database.
 2. **Check the Docker**: Ensure you have Docker installed on your machine and it is running. If not, download and install it from Docker's official website.
 2. **Clone the Project**: git clone <>, cd SimpleTaskTracker
 3. **Run the app with Docker**: docker-compose up --build
-4. **Open your browser and go to**: http://localhost:5000
+4. **Update flask**: Go to docker terminal and write "docker exec -it simpletasktrackerr-app-1 bash" then write "flask db upgrade"
+5. **Open your browser and go to**: http://localhost:5000
 
 ## Technologies Used
 - Flask (Backend)
