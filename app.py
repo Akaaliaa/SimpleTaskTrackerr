@@ -4,20 +4,17 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 
-# MySQL bağlantı dizesi
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://user:password@db:3306/tasktracker"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Veritabanı yapılandırması
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)  # Flask-Migrate yapılandırması
+migrate = Migrate(app, db) 
 
-# Veritabanı modeli
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(200), nullable=True)
-    status = db.Column(db.String(20), default="Pending")  # Durum ekleniyor
+    status = db.Column(db.String(20), default="Pending") 
 
 @app.route('/')
 def index():
@@ -37,7 +34,7 @@ def add_task():
 def complete_task(task_id):
     task = Task.query.get(task_id)
     if task:
-        task.status = "Completed"  # Durumu "Completed" yap
+        task.status = "Completed" 
         db.session.commit()
     return redirect(url_for('index'))
 
